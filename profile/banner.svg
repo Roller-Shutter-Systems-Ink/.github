@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Roller Shutter Systems - Роллетные системы, РОЛ ГРУПП. Роллеты и рольставни: производство и монтаж">
+  <title>Roller Shutter Systems - Роллетные системы</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="0.65" stop-color="#0f1a14"/>
+      <stop offset="1" stop-color="#12301f"/>
+    </linearGradient>
+    <linearGradient id="slat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#56d97a"/>
+      <stop offset="1" stop-color="#2ea043"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f6e46"/>
+      <stop offset="1" stop-color="#174f34"/>
+    </linearGradient>
+    <clipPath id="card">
+      <rect width="1280" height="320" rx="24"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#card)">
+    <rect width="1280" height="320" fill="url(#bg)"/>
+
+    <!-- ламели справа: полотно уходит вниз и растворяется -->
+    <g fill="#3fb950">
+      <rect x="1104" y="40" width="152" height="18" rx="4" opacity="0.16"/>
+      <rect x="1104" y="66" width="152" height="18" rx="4" opacity="0.13"/>
+      <rect x="1104" y="92" width="152" height="18" rx="4" opacity="0.11"/>
+      <rect x="1104" y="118" width="152" height="18" rx="4" opacity="0.09"/>
+      <rect x="1104" y="144" width="152" height="18" rx="4" opacity="0.07"/>
+      <rect x="1104" y="170" width="152" height="18" rx="4" opacity="0.055"/>
+      <rect x="1104" y="196" width="152" height="18" rx="4" opacity="0.04"/>
+      <rect x="1104" y="222" width="152" height="18" rx="4" opacity="0.03"/>
+      <rect x="1104" y="248" width="152" height="18" rx="4" opacity="0.02"/>
+    </g>
+  </g>
+
+  <!-- знак: роллета в коробе, как на логотипе организации -->
+  <g transform="translate(88 56)">
+    <rect x="0" y="0" width="208" height="208" rx="22" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <rect x="22" y="24" width="164" height="32" rx="7" fill="url(#box)"/>
+    <rect x="30" y="28" width="148" height="3" rx="1.5" fill="#2f8a59" opacity="0.6"/>
+    <rect x="24" y="56" width="5" height="130" rx="2" fill="#30363d"/>
+    <rect x="179" y="56" width="5" height="130" rx="2" fill="#30363d"/>
+    <rect x="33" y="64" width="142" height="20" rx="4" fill="url(#slat)"/>
+    <rect x="33" y="89" width="142" height="20" rx="4" fill="url(#slat)"/>
+    <rect x="33" y="114" width="142" height="20" rx="4" fill="url(#slat)"/>
+    <rect x="33" y="139" width="142" height="20" rx="4" fill="url(#slat)"/>
+    <rect x="33" y="164" width="142" height="20" rx="4" fill="url(#slat)"/>
+  </g>
+
+  <!-- надписи -->
+  <g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+    <text x="344" y="136" font-size="56" font-weight="700" fill="#f0f6fc">Roller Shutter Systems</text>
+    <text x="346" y="184" font-size="28" font-weight="600" fill="#3fb950">Роллетные системы · РОЛ ГРУПП</text>
+    <text x="346" y="226" font-size="22" fill="#8b949e">Роллеты и рольставни: производство и монтаж</text>
+  </g>
+</svg>

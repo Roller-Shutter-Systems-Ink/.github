@@ -1,0 +1,55 @@
+# Проверка журнала сессий: если push или pull request меняет файлы, журнал тоже должен меняться.
+# Копировать в .github/workflows/journal-check.yml. Правило: раздел «Журнал сессий» в CLAUDE.md и AGENTS.md.
+name: Журнал сессий
+
+on:
+  push:
+  pull_request:
+
+env:
+  JOURNAL: JOURNAL.md   # если журнал проекта называется иначе (COORDINATION.md), поменять здесь
+
+jobs:
+  journal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Журнал обновлён
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          if [ ! -f "$JOURNAL" ]; then
+            echo "::error::В репозитории нет $JOURNAL. Правило: раздел «Журнал сессий» в CLAUDE.md или AGENTS.md."
+            exit 1
+          fi
+          if [ "$EVENT" = "pull_request" ]; then
+            RANGE="$BASE...$HEAD"
+          elif [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "Новая ветка: журнал на месте."
+            exit 0
+          else
+            RANGE="$BEFORE..$AFTER"
+          fi
+          if ! CHANGED=$(git diff --name-only "$RANGE" 2>/dev/null); then
+            echo "::warning::Не удалось сравнить $RANGE (возможно, история переписана). Проверьте журнал вручную."
+            exit 0
+          fi
+          if [ -z "$CHANGED" ]; then
+            echo "Изменений нет."
+            exit 0
+          fi
+          if grep -qxF "$JOURNAL" <<< "$CHANGED"; then
+            echo "Журнал обновлён."
+            exit 0
+          fi
+          echo "::error::Файлы изменены, а $JOURNAL нет. Добавьте запись о сессии и отправьте снова."
+          printf '%s\n' "$CHANGED"
+          exit 1
